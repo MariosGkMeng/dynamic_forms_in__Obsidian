@@ -181,33 +181,16 @@ def extract_parameters_md_file(Lines, par):
 
 # 👇🏼 USER PARAMETERS
 
-par_case = 1 # 1: cover_letter_lab, 2: deleteme_lab
+path0 = 'C:\\MARIOS\\WORK\\workTips'
+files = dict()
+files['dynamic_form_lab'] = path0 + '\\' + 'form_lab_deleteme1.md'
+files['field_source'] = 'table_deleteme1.md'
+files['table_source_name'] = '# Table'
+files['write_form'] = path0+ '\\' + 'form_deleteme1.md'
 
-if par_case == 1:
-    path0 = 'C:\\MARIOS\\WORK\\workTips'
-
-    files = dict()
-    files['dynamic_form_lab'] = path0 + '\\' + 'CoverLetterLab.md'
-    files['field_source'] = 'tableJobs.md'
-    files['table_source_name'] = '# Saved Positions'
-    files['write_form'] = path0+ '\\' + 'CoverLetter.md'
-
-    # 👇🏼👇🏼 columns from "files['table_source_name']" that are used as fields
-    flds2change = ['#🔰/JobType', '#🔰/Topic', '#🔰/Country', '#🔰/Company']
-    
-elif par_case == 2:
-    
-    path0 = 'C:\\MARIOS\\WORK\\workTips'
-
-    files = dict()
-    files['dynamic_form_lab'] = path0 + '\\' + 'form_lab_deleteme1.md'
-    files['field_source'] = 'table_deleteme1.md'
-    files['table_source_name'] = '# Table'
-    files['write_form'] = path0+ '\\' + 'form_deleteme1.md'
-
-    # 👇🏼👇🏼 columns from "files['table_source_name']" that are used as fields
-    flds2change = ['#🔰/Product_type', '#🔰/Country']
-    #   ℹ --> can create this based on what is in "files['field_source']"
+# 👇🏼👇🏼 columns from "files['table_source_name']" that are used as fields
+flds2change = ['#🔰/Product_type', '#🔰/Country']
+#   ℹ --> can create this based on what is in "files['field_source']"
 # 👆🏼👆🏼
 
 # 👆🏼
