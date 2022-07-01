@@ -1,7 +1,7 @@
 # dynamic_forms_in__Obsidian
 A dynamic form/essay/letter generator based on [Obsidian](https://obsidian.md/) (which you'll need to **install** to use this tool).
 
-**_VIDEO [HERE](https://drive.google.com/file/d/1bAL7fB533kJPgGvDSwcS1tzJrEs7ko5a/view?usp=sharing)_** (sorry for using GoogleDrive link, GitHub does not allow me to upload larger than 10MB files and I lack the patience to format/cut/you-get-the-point)
+**_📽📽 VIDEO [HERE](https://drive.google.com/file/d/1bAL7fB533kJPgGvDSwcS1tzJrEs7ko5a/view?usp=sharing) 📽📽_** (sorry for using GoogleDrive link, GitHub does not allow me to upload larger than 10MB files and I lack the patience to format/cut/you-get-the-point)
 
 
 # Prerequisites
