@@ -72,8 +72,9 @@ It is better to have all the files in the same path, otherwise you can change:
 - The **fields** are then communicated to `file:form_lab_deleteme1.md`, which contains a set of rules based on those fields
 - The `file:form_lab_deleteme1.md` contains the **▶ Generate** button that generates the form/letter which is dependent on those **fields**
 
+### Create new field
 
-
+**_📽📽 Check [VIDEO](https://drive.google.com/file/d/1YxXR6RZbQ_JsW2rn0oa5xB0eoEN_KzH-/view?usp=sharing) 📽📽_**
 
 
 
