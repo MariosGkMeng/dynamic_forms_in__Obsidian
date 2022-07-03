@@ -46,6 +46,10 @@ There are some paths inside the files of the project which require manual adjust
 1. file "form_lab_deleteme1.md", change the path: "file:///...\generate_form.bat" to "file:///your_path\generate_form.bat"
 2. in the python script, locate the "path0" variable and change it to where you place the project folder
 
+It is better to have all the files in the same path, otherwise you can change:
+
+1. The path of the python file inside the .bat file (in case the .bat file is in another folder)
+
 ## 📖 Learn
 
 ℹ --> Check below, but also: **source_C**: comments inside the form_lab_deleteme1.md file (open Obsidian in editor mode)
