@@ -43,6 +43,6 @@ For help on how to install those packages, check this [link](https://packaging.p
 
 There are some paths inside the files of the project which require manual adjustment:
 
-1. file "form_lab_deleteme1.md", change the path: "[▶ Generate](<file:///...\generate_form.bat>)" to "[▶ Generate](<file:///your_path\generate_form.bat>)"
+1. file "form_lab_deleteme1.md", change the path: "[▶ Generate](file:///...\generate_form.bat)" to "[▶ Generate](file:///your_path\generate_form.bat)"
 2. in the python script, locate the "path0" variable and change it to where you place the project folder
 
