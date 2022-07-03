@@ -6,7 +6,7 @@ A dynamic form/essay/letter generator based on [Obsidian](https://obsidian.md/) 
 
 # Prerequisites
 
-## Install Obsidian
+## 🛠 Install Obsidian
 
 [Obsidian](https://obsidian.md/) is a free, flexible note-taking tool that supports numerous capabilities. It is very "lightweight" (in terms of CPU), provides nices visualizations, connects notes with each other, runs commands and many other capabilities.
 
@@ -22,7 +22,7 @@ Before you do so, make sure to deactivate safe-mode, so that community plugins c
 
 Check the Help guide of Obsidian for that.
 
-## Install Python
+## 🛠 Install Python
 
 Install Python (preferably 3.7+)
 
