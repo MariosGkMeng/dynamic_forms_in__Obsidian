@@ -184,12 +184,24 @@ def extract_parameters_md_file(Lines, par):
 path0 = 'C:\\MARIOS\\WORK\\workTips'
 files = dict()
 files['dynamic_form_lab'] = path0 + '\\' + 'form_lab_deleteme1.md'
-files['field_source'] = 'table_deleteme1.md'
+files['field_source'] = path0+ '\\' + 'table_deleteme1.md'
 files['table_source_name'] = '# Table'
 files['write_form'] = path0+ '\\' + 'form_deleteme1.md'
 
 # 👇🏼👇🏼 columns from "files['table_source_name']" that are used as fields
-flds2change = ['#🔰/Product_type', '#🔰/Country']
+fileTable = open(files['field_source'], encoding='utf8')
+patt1 = r"#🔰\/\w+"
+flds2change = []
+
+LinesT = fileTable.readlines()
+
+for ln in LinesT:
+    pop = re.findall(patt1, ln)
+    if len(pop)>0:
+        flds2change += pop
+
+flds2change = list(np.unique(flds2change))
+fileTable.close()
 #   ℹ --> can create this based on what is in "files['field_source']"
 # 👆🏼👆🏼
 
@@ -208,7 +220,7 @@ for ln in Lines:
         FormID = FormID.replace(' ','')
         FormID = FormID.replace('\n','')
 
-file1 = open(path0+ '\\' + files['field_source'], encoding='utf8')
+file1 = open(files['field_source'], encoding='utf8')
 
 [table, columns] = read_table_obsidian(file1, files['table_source_name'])
 
