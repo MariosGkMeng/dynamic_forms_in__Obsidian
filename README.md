@@ -67,7 +67,11 @@ It is better to have all the files in the same path, otherwise you can change:
 
 ## How it works
 
-The `file:table_deleteme1.md` is the one that provides the `file:form_lab_deleteme1.md` with the information regarding the *fields*
+- The `file:table_deleteme1.md` is the one that provides the `file:form_lab_deleteme1.md` with the information regarding the **fields**. 
+  - The **fields** are to be written in the format `#🔰/field_1`, `#🔰/field_2`, etc. and they are expressed as columns in the table of `file:table_deleteme1.md`
+- The **fields** are then communicated to `file:form_lab_deleteme1.md`, which contains a set of rules based on those fields
+- The `file:form_lab_deleteme1.md` contains the **▶ Generate** button that generates the form/letter which is dependent on those **fields**
+
 
 
 
