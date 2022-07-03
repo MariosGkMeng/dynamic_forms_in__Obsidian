@@ -64,3 +64,12 @@ It is better to have all the files in the same path, otherwise you can change:
 
 - Logical expressions for the "#🗝/" and "#❓/" type of variables --> check **source_C**
 
+
+## How it works
+
+The `file:table_deleteme1.md` is the one that provides the `file:form_lab_deleteme1.md` with the information regarding the *fields*
+
+
+
+
+
