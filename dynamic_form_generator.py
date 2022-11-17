@@ -1,3 +1,4 @@
+from enum import unique
 from genericpath import exists
 from turtle import fd
 import numpy as np
@@ -180,35 +181,58 @@ def extract_parameters_md_file(Lines, par):
 
 
 # 👇🏼 USER PARAMETERS
-
 path0 = 'C:\\MARIOS\\WORK\\workTips'
-files = dict()
-files['dynamic_form_lab'] = path0 + '\\' + 'form_lab_deleteme1.md'
-files['field_source'] = path0+ '\\' + 'table_deleteme1.md'
-files['table_source_name'] = '# Table'
-files['write_form'] = path0+ '\\' + 'form_deleteme1.md'
 
-# 👇🏼👇🏼 columns from "files['table_source_name']" that are used as fields
-fileTable = open(files['field_source'], encoding='utf8')
-patt1 = r"#🔰\/\w+"
-flds2change = []
+par_case = 2 # 1: cover_letter_lab, 2: deleteme_lab
 
-LinesT = fileTable.readlines()
+if par_case == 1:
 
-for ln in LinesT:
-    pop = re.findall(patt1, ln)
-    if len(pop)>0:
-        flds2change += pop
+    files = ({\
+        'dynamic_form_lab': path0 + '\\' + 'CoverLetterLab.md',\
+            'field_source': 'tableJobs.md',\
+       'table_source_name': '# Saved Positions',\
+              'write_form': path0+ '\\' + 'CoverLetter.md',                       
+    })
+    
 
-flds2change = list(np.unique(flds2change))
-fileTable.close()
-#   ℹ --> can create this based on what is in "files['field_source']"
+    # 👇🏼👇🏼 columns from "files['table_source_name']" that are used as fields
+    flds2change = ['#🔰/JobType', '#🔰/Topic', '#🔰/Country', '#🔰/Company']
+    
+    
+elif par_case == 2:
+    
+    files = ({\
+        'dynamic_form_lab': path0 + '\\' + 'form_lab_deleteme1.md',\
+            'field_source': 'table_deleteme1.md',\
+       'table_source_name': '# Table',\
+              'write_form': path0+ '\\' + 'form_deleteme1.md', 
+    })
+
+    # 👇🏼👇🏼 columns from "files['table_source_name']" that are used as fields
+    # flds2change = ['#🔰/Product_type', '#🔰/Country', '#🔰/Condition']
+    #   ℹ --> can create this based on what is in "files['field_source']"
+    
+    # Get fields from file
+    
+    fileTable = open(files['field_source'], encoding='utf8')
+    patt1 = r"#🔰\/\w+"
+    flds2change = []
+    
+    LinesT = fileTable.readlines()
+    
+    for ln in LinesT:
+        pop = re.findall(patt1, ln)
+        if len(pop)>0:
+            flds2change += pop
+    
+    flds2change = list(np.unique(flds2change))
+    fileTable.close()
+    
+    
 # 👆🏼👆🏼
 
 # 👆🏼
 
-par = dict()
-par['list_np'] = ['abs', 'np']
 
 fileFormLab = open(files['dynamic_form_lab'], encoding='utf8')#, 'r')
 Lines = fileFormLab.readlines()
@@ -249,14 +273,14 @@ for key in fieldPrfx.keys():
 # \==================================================\==================================================\==================================================    
 
 
-
-
-par['words_pattern'] = '[a-z,_,\/,#,🏁,⚠,💬,⚙,🗝,🔰,❓,🔅,🚧,🕊, 1-9, -]+' #'[a-z,_,#,🏁,💬,⚙,🗝,/,🔰,❓,💪,🚧,🕊, 1-9, -]+' 
-par['line_inp'] = '| -'
-par['curr_run_prefix'] = 'curr_run::' 
-par['sep'] = "|"
-par['search_family'] = False
-
+par = ({\
+              'list_np':  ['abs', 'np'],\
+        'words_pattern': '[a-z,_,\/,#,🏁,⚠,💬,⚙,🗝,🔰,❓,🔅,🚧,🕊, 1-9, -]+',\
+             'line_inp': '| -',\
+      'curr_run_prefix': 'curr_run::' ,\
+                  'sep': "|",\
+        'search_family': False\
+})
 
 # fileFormLab.close()
 # fileFormLab = open(path0 + '\\' + 'CoverLetterLab.md', encoding='utf8')#, 'r')
@@ -326,3 +350,52 @@ file1.close()
 file1 = open(files['write_form'], 'w', encoding='utf8')
 file1.writelines(mainBody)
 file1.close()
+
+
+do_automations = False
+
+if do_automations:
+    # \Write specs text file for UIPath Workflow  ==================================================\==================================================
+
+    file1 = open('C:\\MARIOS\\WORK\\WorkTips\\Applications\\application_info' + '\\' + 'type_of_cv.txt', 'w', encoding='utf8')
+    file1.writelines(vals[vars.index('#❓/CV/whattype')])
+    file1.close()
+    # \==================================================\==================================================
+    mainBodyLines = mainBody.splitlines()
+    mainBodyLines = [item for item in mainBodyLines if len(item)>0]
+    paste_to_word = False
+    save_to_pdf = False
+    # It only appends to word, but I want to replace the text!!!
+    if paste_to_word:
+        
+        # Packages \==================================================\==================================================
+        import docx
+        from docx.shared import Pt, Inches, Cm
+        from docx.enum.text import WD_ALIGN_PARAGRAPH
+        #  \==================================================\==================================================
+        
+        
+        flnm = "C:\\MARIOS\\WORK\\WorkTips\\Applications\\tmp\\MARIOS_GKIONIS__COVER_LETTER.docx"
+        if exists(flnm): os.remove(flnm)
+
+        document = docx.Document()
+        document.save(flnm)
+        
+        for ln in mainBodyLines:
+            paragraph = document.add_paragraph(ln)
+            style = document.styles['Normal']
+            font = style.font
+            font.name = 'Verdana'
+            font.size = Pt(9)
+            paragraph.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+
+
+        sections = document.sections
+        for section in sections:
+            section.top_margin = Cm(1.5)
+            section.bottom_margin = Cm(1.5)
+            section.left_margin = Cm(1.5)
+            section.right_margin = Cm(1.5)
+
+        document.save(flnm)
+        if save_to_pdf: subprocess.call([r'C:\MARIOS\WORK\workTips\Applications\cmd_open_word_cover_letter.bat'])
